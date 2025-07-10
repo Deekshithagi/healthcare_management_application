@@ -8,11 +8,11 @@ const GetDoctor = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const token = localStorage.getItem("token"); // Get JWT token
+        const token = localStorage.getItem("token"); 
         const response = await axios.get("http://localhost:5000/api/getdoctors", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setDoctors(response.data.doctors); // Store doctors data
+        setDoctors(response.data.doctors); 
       } catch (error) {
         setError(error.response?.data?.error || "Failed to fetch doctors.");
       }
@@ -22,7 +22,7 @@ const GetDoctor = () => {
   }, []);
 
   return (
-    <div>
+<div  style={{ backgroundColor: "rgba(255,255,255,0.8)" }}>
       <h2>Available Doctors</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {doctors.length > 0 ? (

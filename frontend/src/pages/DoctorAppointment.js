@@ -10,7 +10,7 @@ const DoctorAppointments = () => {
     fetchAppointments();
   }, []);
 
-  // Fetch doctor’s appointments
+  
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -25,7 +25,7 @@ const DoctorAppointments = () => {
     }
   };
 
-  // Update appointment status (Approve/Reject)
+  
   const updateStatus = async (appointmentId, status) => {
     try {
       const token = localStorage.getItem("token");
@@ -35,7 +35,7 @@ const DoctorAppointments = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert(`Appointment ${status} successfully!`);
-      fetchAppointments(); // Refresh appointment list
+      fetchAppointments(); 
     } catch (error) {
       alert("Failed to update appointment status.");
     }
@@ -84,9 +84,8 @@ const DoctorAppointments = () => {
   );
 };
 
-// CSS Styles
 const styles = {
-  container: { maxWidth: "800px", margin: "auto", textAlign: "center", padding: "20px" },
+  container: { maxWidth: "800px", margin: "auto", textAlign: "center", padding: "20px", backgroundColor:"rgba(255,255,255,0.9)" },
   table: { width: "100%", borderCollapse: "collapse", marginTop: "20px" },
   status: { fontWeight: "bold" },
   approveBtn: { padding: "5px 10px", margin: "5px", backgroundColor: "green", color: "white", border: "none", cursor: "pointer" },

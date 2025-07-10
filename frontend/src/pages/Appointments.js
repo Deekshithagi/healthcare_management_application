@@ -2,19 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Appointments = () => {
-  const [view, setView] = useState("home"); // Controls which section is displayed
+  const [view, setView] = useState("home"); 
   const [formData, setFormData] = useState({ doctor_id: "", appointment_date: "", reason: "" });
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState("");
 
-  // Fetch appointments when "View Appointments" or "Cancel Appointment" is selected
   useEffect(() => {
     if (view === "view" || view === "cancel") {
       fetchAppointments();
     }
   }, [view]);
 
-  // Fetch all appointments
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -27,12 +25,10 @@ const Appointments = () => {
     }
   };
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Book an appointment
   const handleBook = async (e) => {
     e.preventDefault();
     try {
@@ -41,13 +37,12 @@ const Appointments = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Appointment booked successfully!");
-      setView("home"); // Redirect back to home
+      setView("home"); 
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-  // Cancel an appointment
   const handleCancel = async () => {
     if (!selectedAppointment) {
       alert("Please enter an appointment ID.");
@@ -55,14 +50,14 @@ const Appointments = () => {
     }
   
     try {
-      const token = localStorage.getItem("token"); // Retrieve JWT token
+      const token = localStorage.getItem("token");  
       const response = await axios.delete(`http://localhost:5000/api/appointments/${selectedAppointment}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
-      alert(response.data.message); // Show success message
-      fetchAppointments(); // Refresh appointments after deletion
-      setSelectedAppointment(""); // Clear input field
+      alert(response.data.message); 
+      fetchAppointments();
+      setSelectedAppointment(""); 
     } catch (error) {
       console.error("Error:", error);
       alert(error.response?.data?.error || "Failed to cancel appointment.");
@@ -74,16 +69,16 @@ const Appointments = () => {
     <div style={styles.container}>
       <h2>Appointments</h2>
 
-      {/* Navigation Buttons */}
+    
       {view === "home" && (
         <div style={styles.nav}>
-          <button onClick={() => setView("book")} style={styles.button}>📅 Book Appointment</button>
-          <button onClick={() => setView("view")} style={styles.button}>📋 View Appointments</button>
-          <button onClick={() => setView("cancel")} style={styles.button}>❌ Cancel Appointment</button>
+          <button onClick={() => setView("book")} style={styles.button}> Book Appointment</button>
+          <button onClick={() => setView("view")} style={styles.button}>View Appointments</button>
+          <button onClick={() => setView("cancel")} style={styles.button}> Cancel Appointment</button>
         </div>
       )}
 
-      {/* Book Appointment Section */}
+      
       {view === "book" && (
         <div>
           <h3>Book an Appointment</h3>
@@ -93,11 +88,11 @@ const Appointments = () => {
             <input type="text" name="reason" placeholder="Reason for appointment" onChange={handleChange} required />
             <button type="submit" style={styles.submitButton}>Book</button>
           </form>
-          <button onClick={() => setView("home")} style={styles.backButton}>🔙 Back</button>
+          <button onClick={() => setView("home")} style={styles.backButton}> Back</button>
         </div>
       )}
 
-      {/* View Appointments Section */}
+      
       {view === "view" && (
         <div>
           <h3>Your Appointments</h3>
@@ -111,7 +106,7 @@ const Appointments = () => {
               </li>
             )) : <p>No appointments found.</p>}
           </ul>
-          <button onClick={() => setView("home")} style={styles.backButton}>🔙 Back</button>
+          <button onClick={() => setView("home")} style={styles.backButton}> Back</button>
         </div>
       )}
       
@@ -129,7 +124,7 @@ const Appointments = () => {
         Cancel Appointment
       </button>
       <button onClick={() => setView("home")} style={styles.backButton}>
-        🔙 Back
+         Back
       </button>
     </div>
   </div>
@@ -143,10 +138,11 @@ const styles = {
   container: { 
     textAlign: "center", 
     marginTop: "50px",
-    padding: "10px",// Adds space inside the container
+    padding: "10px", 
     gap: "15px" ,
     display: "block" ,
-    alignItems:"center" // Ensures elements stack properly
+    alignItems:"center" ,
+    backgroundColor:"rgba(255, 255, 255, 0.8)",
 
 
   },
@@ -154,21 +150,21 @@ const styles = {
   nav: { 
     display: "flex", 
     flexDirection: "column", 
-    gap: "50px",   // Increased gap for better spacing
+    gap: "50px",   
     alignItems: "center",
-    marginBottom: "30px", // Space below navigation buttons
+    marginBottom: "30px",
   },
 
   button: { 
     padding: "12px", 
     width: "220px", 
-    background: "#007bff", 
+    background: "rgba(0,128,0,0.7)", 
     color: "white", 
     border: "none", 
     cursor: "pointer", 
     borderRadius: "5px",
     fontSize: "16px",
-    marginBottom: "15px" // Adds space between buttons
+    marginBottom: "15px" 
   },
 
   form: { 
@@ -178,10 +174,10 @@ const styles = {
     width: "350px", 
     margin: "auto",
     padding: "20px",
-    border: "1px solid #ddd", // Adds a light border
+    border: "1px solid #ddd", 
     borderRadius: "10px",
     backgroundColor: "#f9f9f9",
-    marginBottom: "30px" // Space between forms and next section
+    marginBottom: "30px" 
   },
 
   submitButton: { 
@@ -203,13 +199,13 @@ const styles = {
     borderRadius: "5px", 
     marginTop: "20px",
     fontSize: "12px",
-      // More spacing above the button
+      
   },
 
   list: { 
     listStyle: "none", 
     padding: 0, 
-    marginBottom: "30px" // Adds space between appointment list and next section
+    marginBottom: "30px" 
   },
 
   listItem: { 
@@ -218,10 +214,11 @@ const styles = {
     textAlign: "left", 
     margin: "auto", 
     width: "350px",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fffff",
     borderRadius: "8px",
-    marginBottom: "10px", // Adds space between items
+    marginBottom: "10px", 
   },
+  
 
   inputField: { 
     width: "210px", 

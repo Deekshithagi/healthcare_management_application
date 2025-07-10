@@ -14,16 +14,14 @@ const PatientRegistration = () => {
 
   const [message, setMessage] = useState("");
 
-  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
+      const token = localStorage.getItem("token"); 
       const response = await axios.post("http://localhost:5000/api/patients", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -60,16 +58,15 @@ const PatientRegistration = () => {
         <input type="text"style={styles.inputField} name="contact" placeholder="Contact" value={formData.contact} onChange={handleChange} required />
         <input type="text"style={styles.inputField} name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
         <textarea name="medical_history"style={styles.inputField} placeholder="Medical History" value={formData.medical_history} onChange={handleChange}></textarea>
-        <button type="submit" style={{ padding: "5px",fontSize: "12px", cursor: "pointer",width: "100px",display: "block",margin: "10px auto"}}>Register
+        <button type="submit" style={{ padding: "5px",fontSize: "12px", cursor: "pointer",width: "100px",display: "block",margin: "10px auto",backgroundColor:"rgba(0,128,0,0.7"}}>Register
 </button>
       </form>
     </div>
   );
 };
-// Simple styling
 const styles = { inputField: {width: "auto",padding:"5px 10px",margin: "10px 5px",border:"1px solid #ccc",borderRadius: "5px",fontSize: "12px"},
   form: { display: "flex", flexDirection: "column", gap: "5px" },
-  message: { color: "green", fontWeight: "bold" }
+  message: { color: "green", fontWeight: "bold" },
 };
 
 export default PatientRegistration;

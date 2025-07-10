@@ -6,7 +6,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("patient"); // Default role is patient
+  const [role, setRole] = useState("patient"); 
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -21,7 +21,7 @@ const Register = () => {
 
       if (response.status === 201) {
         alert("Registration Successful! Please login.");
-        navigate("/"); // Redirect to login page
+        navigate("/"); 
       }
     } catch (error) {
       console.error("Registration Error:", error.response?.data || error.message);

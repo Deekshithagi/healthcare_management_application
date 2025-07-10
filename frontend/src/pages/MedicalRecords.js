@@ -8,12 +8,11 @@ const MedicalRecords = () => {
   const [patientId, setPatientId] = useState(null);
 
   useEffect(() => {
-    // Extract patientId from JWT token
     const token = localStorage.getItem("token");
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        setPatientId(decodedToken.id); // Assuming token contains { id: patient_id }
+        setPatientId(decodedToken.id); 
       } catch (error) {
         console.error("Error decoding token:", error);
         setError("Invalid authentication token.");
@@ -25,7 +24,7 @@ const MedicalRecords = () => {
 
   useEffect(() => {
     const fetchMedicalRecords = async () => {
-      if (!patientId) return; // Ensure patientId is available before fetching
+      if (!patientId) return; 
 
       try {
         const token = localStorage.getItem("token");
@@ -63,7 +62,6 @@ const MedicalRecords = () => {
   );
 };
 
-// 🔹 Basic Styles
 const styles = {
   container: {
     maxWidth: "600px",
@@ -73,6 +71,7 @@ const styles = {
     border: "1px solid #ddd",
     borderRadius: "10px",
     boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
   },
   list: {
     listStyle: "none",

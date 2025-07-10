@@ -14,11 +14,10 @@ const Login = () => {
 
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("role", response.data.role); // Save role in local storage
+        localStorage.setItem("role", response.data.role);
 
         alert("Login Successful!");
 
-        // Redirect based on role
         if (response.data.role === "patient") {
           navigate("/patient-dashboard");
         } else if (response.data.role === "doctor") {
@@ -41,7 +40,8 @@ const Login = () => {
       textAlign: "center",
       border: "1px solid #ddd",
       borderRadius: "10px",
-      boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
+      boxShadow: "2px 2px 10px rgba(0,0,0,1)",
+      backgroundColor:"rgba(255, 255, 255, 0.7)",
     },
     input: {
       width: "90%",
@@ -71,7 +71,7 @@ const Login = () => {
   };
 
   return (
-    <div style={styles.background}> {/* Background applied to full page */}
+    <div style={styles.background}> 
     <div style={styles.container}>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>

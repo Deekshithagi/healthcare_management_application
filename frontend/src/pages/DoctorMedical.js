@@ -10,12 +10,10 @@ const DoctorMedical = () => {
   });
   const [message, setMessage] = useState("");
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit form data
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,7 +25,7 @@ const DoctorMedical = () => {
       }
 
       await axios.post(
-        "http://localhost:5000/api/medical-records", // Adjust as needed
+        "http://localhost:5000/api/medical-records", 
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -36,7 +34,6 @@ const DoctorMedical = () => {
 
       alert("Medical record added successfully!");
 
-      // Reset form fields and clear the message
       setFormData({
         patient_id: "",
         doctor_id: "",
@@ -44,7 +41,7 @@ const DoctorMedical = () => {
         prescription: "",
       });
 
-      setMessage(""); // Clear the message after form reset
+      setMessage(""); 
 
     } catch (error) {
       console.error("Error:", error);
@@ -89,13 +86,11 @@ const DoctorMedical = () => {
         <button type="submit" style={styles.submitButton}>Add Record</button>
       </form>
 
-      {/* Message will only show if it's not empty */}
       {message && <p style={styles.message}>{message}</p>}
     </div>
   );
 };
 
-// Inline styles
 const styles = {
   container: {
     maxWidth: "400px",
@@ -104,7 +99,9 @@ const styles = {
     border: "1px solid #ccc",
     borderRadius: "8px",
     textAlign: "center",
-    boxShadow: "2px 2px 10px rgba(0,0,0,0.1)",
+    boxShadow: "2px 2px 10px rgba(0,0,0,0.5)",
+    
+
   },
   form: {
     display: "flex",

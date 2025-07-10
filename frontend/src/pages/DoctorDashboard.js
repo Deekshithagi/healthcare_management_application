@@ -33,10 +33,11 @@ const buttonStyle = {
   width: "350px", 
   border: "none",
   borderRadius: "5px",
-  backgroundColor: "skyblue",
+  backgroundColor: "rgba(0, 128, 0, 0.8)",
   color: "white",
   cursor: "pointer",
   textAlign: "center"
+
 };
 
 const linkStyle = {

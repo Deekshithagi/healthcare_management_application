@@ -1,0 +1,7 @@
+body{
+    background-image: url('./images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9; 
+    z-index: -0.8;
+}

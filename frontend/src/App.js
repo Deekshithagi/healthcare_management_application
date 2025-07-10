@@ -11,6 +11,7 @@ import DoctorRegister from "./pages/DoctorRegister";
 import DoctorMedical from "./pages/DoctorMedical";
 import DoctorAppointment from "./pages/DoctorAppointment";
 import GetDoctor from "./pages/GetDoctor";
+import "./App.css";
 
 function App() {
   return (

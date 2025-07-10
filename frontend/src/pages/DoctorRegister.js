@@ -11,16 +11,14 @@ const DoctorRegistration = () => {
 
   const [message, setMessage] = useState("");
 
-  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
+      const token = localStorage.getItem("token"); 
       const response = await axios.post("http://localhost:5000/api/doctors", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -54,7 +52,7 @@ const DoctorRegistration = () => {
 
 const styles = {
   container: { maxWidth: "400px", margin: "auto", textAlign: "center", padding: "50px" },
-  inputField: { width: "auto", padding: "10px 10px", margin: "10px 5px", border: "1px solid #ccc", borderRadius: "5px", fontSize: "12px" },
+  inputField: { width: "auto", padding: "10px 10px", margin: "10px 5px", border: "2px solid #ccc", borderRadius: "5px", fontSize: "12px" },
   form: { display: "flex", flexDirection: "column", gap: "5px" },
   button: { padding: "5px", fontSize: "12px", cursor: "pointer", width: "100px", display: "block", margin: "10px auto",backgroundColor: "#4CAF50"},
   message: { color: "green", fontWeight: "bold" },
