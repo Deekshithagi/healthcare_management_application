@@ -116,7 +116,7 @@ We welcome contributions to the Healthcare Management System! To contribute:
 
 ### Guidelines
 - Follow the existing code style and structure
-- Write clear, concise commit messages
+- Write clear and concise commit messages
 - Ensure all tests pass before submitting
 - Update documentation if necessary
 
